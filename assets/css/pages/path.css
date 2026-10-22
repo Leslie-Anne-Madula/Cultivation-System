@@ -1,0 +1,90 @@
+.ascent { position: relative; }
+.ascent-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.ascent-strip { position: absolute; left: 0; top: 0; height: 100%; will-change: transform; }
+.ascent-strip canvas { position: absolute; left: 0; top: 0; height: 100%; }
+.ascent-trail { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.ascent-trail .track { fill: none; stroke: var(--line-strong); stroke-width: 1.5; stroke-dasharray: 2 7; stroke-linecap: round; }
+.ascent-trail .walked { fill: none; stroke: var(--cinnabar); stroke-width: 2.4; stroke-linecap: round; }
+.ascent-edges { position: absolute; inset: 0; z-index: 4; background: linear-gradient(90deg, var(--paper) 0, transparent 7%, transparent 93%, var(--paper) 100%); pointer-events: none; }
+
+.frontispiece { position: absolute; top: calc(var(--header-h) + 8vh); left: max(32px, calc((100vw - var(--wrap)) / 2)); z-index: 2; width: min(560px, 44vw); }
+.frontispiece .eyebrow { max-width: 420px; margin-bottom: 16px; }
+.frontispiece .display { margin-bottom: 14px; font-size: clamp(2.6rem, 5.4vw, 4.8rem); }
+.frontispiece .lead { margin: 0; }
+
+/* Stations */
+.station { position: absolute; width: min(340px, 78vw); transform: translateX(-50%); }
+.station.side { transform: none; }
+.station-marker {
+  position: absolute;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--ink);
+  background: var(--paper-2);
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: background 0.4s, border-color 0.4s;
+}
+.station.side .station-marker { left: -34px; }
+.station.reached .station-marker { background: var(--ink); }
+.station.current .station-marker { border-color: var(--cinnabar); background: var(--cinnabar); animation: qi 2.6s infinite; }
+@keyframes qi { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--cinnabar) 50%, transparent); } 100% { box-shadow: 0 0 0 18px transparent; } }
+.station-stem { position: absolute; left: 50%; width: 1px; background: var(--line-strong); }
+.station-card {
+  position: relative;
+  padding: 20px 22px 18px;
+  border: 1px solid var(--line-strong);
+  background: color-mix(in srgb, var(--paper-2) 92%, transparent);
+  opacity: 0.86;
+  transition: transform 0.6s var(--ease), box-shadow 0.6s, opacity 0.6s;
+}
+.station.reached .station-card, .station.current .station-card { opacity: 1; }
+.station.focus .station-card { box-shadow: 0 24px 50px -30px rgba(40, 28, 10, 0.55); transform: translateY(-4px); }
+.station-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+.station-glyph { display: block; color: var(--ink); font-family: var(--f-brush); font-size: 2.6rem; line-height: 1; }
+.station.current .station-glyph { color: var(--cinnabar); }
+.station-when { flex: none; color: var(--ink-3); font-size: 0.72rem; letter-spacing: 0.08em; text-align: right; }
+.station-realm { color: var(--ink-2); font-family: var(--f-serif); font-size: 1.05rem; font-weight: 600; letter-spacing: 0.02em; line-height: 1.2; }
+.station-card .station-title { margin: 16px 0 10px; color: var(--ink); font-size: 0.9rem; font-weight: 600; line-height: 1.4; }
+.station-card p { margin: 0; color: var(--ink-2); font-size: 0.88rem; line-height: 1.55; }
+.station-here { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 6px; color: var(--cinnabar); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.station-here::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--cinnabar); animation: pulse 2s infinite; }
+.station.locked .station-card { border-style: dashed; background: color-mix(in srgb, var(--paper-2) 70%, transparent); }
+.station.locked .station-glyph { opacity: 0.55; }
+.station-lock { position: absolute; top: -18px; right: 14px; width: 34px; height: 34px; font-size: 19px; transform: rotate(-8deg); }
+.station .btn { margin-top: 14px; }
+
+.merits { display: grid; gap: 5px; margin: 12px 0 0; padding: 10px 0 0; border-top: 1px dashed var(--line); list-style: none; }
+.merits li { display: grid; grid-template-columns: 12px minmax(0, 1fr); align-items: baseline; gap: 8px; color: var(--ink); font-size: 0.8rem; }
+.merits li::before { content: ""; width: 6px; height: 6px; background: var(--cinnabar); transform: rotate(45deg) translateY(-1px); }
+.merits.compact { display: flex; flex-wrap: wrap; gap: 6px; }
+.merits.compact li { display: inline-block; padding: 2px 8px; border: 1px solid var(--line-strong); font-size: 0.74rem; line-height: 1.4; }
+.merits.compact li::before { display: none; }
+
+/* Progress */
+.ascent-progress {
+  position: absolute;
+  left: 50%;
+  bottom: max(18px, env(safe-area-inset-bottom, 0px));
+  z-index: 5;
+  display: grid;
+  gap: 8px;
+  width: min(720px, calc(100% - 32px));
+  transform: translateX(-50%);
+}
+.progress-track { position: relative; height: 2px; background: var(--line-strong); }
+.progress-track span { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--cinnabar); }
+.progress-realms { display: flex; justify-content: space-between; color: var(--ink-3); font-family: var(--f-brush); font-size: 1rem; }
+.progress-realms span { transition: color 0.3s; }
+.progress-realms span.on { color: var(--ink); }
+.progress-hint { color: var(--ink-3); font-size: 0.74rem; letter-spacing: 0.14em; text-align: center; text-transform: uppercase; transition: opacity 0.4s; }
+
+/* Vertical layout for narrow screens */
+.ascent.vertical .ascent-sticky { position: relative; height: auto; overflow: visible; }
+.ascent.vertical .ascent-strip { position: relative; display: grid; gap: 22px; width: auto !important; height: auto; padding: 10px var(--gutter-r) 40px var(--gutter-l); transform: none !important; }
+.ascent.vertical canvas, .ascent.vertical .ascent-trail, .ascent.vertical .ascent-progress, .ascent.vertical .ascent-edges, .ascent.vertical .station-stem { display: none; }
+.ascent.vertical .frontispiece { position: relative; top: auto; left: auto; width: auto; margin-bottom: 6px; padding-top: calc(var(--header-h) + 28px); }
+.ascent.vertical .station { position: relative; left: auto !important; top: auto !important; width: 100%; padding-left: 34px; transform: none; }
+.ascent.vertical .station-marker { left: 9px !important; top: 26px !important; }
+.ascent.vertical .station::before { content: ""; position: absolute; left: 9px; top: 26px; bottom: -22px; width: 1px; background: var(--line-strong); }
+.ascent.vertical .station:last-child::before { display: none; }

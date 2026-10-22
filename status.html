@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Status Window · Leslie Madula</title>
+  <meta name="description" content="Status window of Leslie Anne M. Madula: realm, attributes, live GitHub records and Five Element techniques.">
+  <meta name="theme-color" content="#e7dcc5">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Ma+Shan+Zheng&family=Manrope:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages/status.css">
+  <script src="assets/js/boot.js"></script>
+  <script type="module" src="assets/js/main.js"></script>
+</head>
+<body data-page="status">
+  <main class="page">
+    <section class="page-head wrap">
+      <p class="eyebrow left"><span><span class="cn" lang="zh-Hans" translate="no">系统面板</span>&ensp;System panel</span></p>
+      <h1 class="display">Status Window</h1>
+      <p class="lead">The System has read the Host's foundation. Figures marked live are drawn from GitHub each time this window opens.</p>
+      <span class="page-glyph" lang="zh-Hans" translate="no" aria-hidden="true">状</span>
+    </section>
+
+    <section class="wrap" aria-labelledby="status-title">
+      <div class="window">
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        <div class="window-bar">
+          <div class="window-title"><span class="seal" translate="no" aria-hidden="true">状</span><h2 id="status-title">Status</h2></div>
+          <span class="live" data-live><i></i><span>Reading the heavens…</span></span>
+        </div>
+
+        <div class="status-grid">
+          <dl class="identity" data-identity></dl>
+          <div class="radar-box">
+            <svg class="radar" data-radar viewBox="0 0 480 400" role="group" aria-label="Attributes"></svg>
+            <p class="attribute-note" data-attribute-note>Point at an attribute to read the System's appraisal.</p>
+          </div>
+        </div>
+
+        <div class="realm-meter" data-realm-meter></div>
+
+        <div class="records" data-records>
+          <div class="records-head">
+            <h2 class="h3">Heavenly Records</h2>
+            <a class="link-ink" href="https://github.com/shenwuu" target="_blank" rel="noopener">Visit the archive on GitHub <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 2.5 10.5 8 5 13.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          <div class="stat-row" data-stats></div>
+
+          <div class="record-block">
+            <div class="record-block-head">
+              <h3 class="h3">Meridian Map <span class="cn" lang="zh-Hans" translate="no" aria-hidden="true">经脉图</span></h3>
+              <div class="heat-legend" aria-hidden="true">Still <i></i><i></i><i></i><i></i><i></i> Surging</div>
+            </div>
+            <p class="label">One dot per day of GitHub activity over the past year</p>
+            <div class="heat-scroll">
+              <div class="heat-months" data-heat-months aria-hidden="true"></div>
+              <div class="heat" data-heat></div>
+            </div>
+            <p class="heat-tip" data-heat-tip>Point at a dot to read that day.</p>
+          </div>
+
+          <div class="record-block">
+            <div class="record-block-head">
+              <h3 class="h3">Scroll Library <span class="cn" lang="zh-Hans" translate="no" aria-hidden="true">藏经阁</span></h3>
+              <div class="library-tabs" role="tablist" aria-label="Repositories" data-library-tabs></div>
+            </div>
+            <div class="repo-list" role="tabpanel" data-library></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" aria-labelledby="techniques-title">
+      <div class="section-head">
+        <p class="eyebrow left"><span><span class="cn" lang="zh-Hans" translate="no">五行功法</span>&ensp;Techniques</span></p>
+        <h2 class="h2" id="techniques-title">Five Element Techniques</h2>
+        <p class="lead">Cultivation stories divide the world into five elements, each one feeding the next. The System sorts the Host's skills the same way, one area of the tech stack per element. Pick an element to open its manual.</p>
+      </div>
+      <div class="elements">
+        <div>
+          <div class="wheel" data-wheel></div>
+          <p class="cycle-caption" data-cycle-caption>Each element feeds the next one around the ring. Point at the ring to see how.</p>
+        </div>
+        <div class="window" data-manual aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

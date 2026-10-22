@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Treasure Pavilion · Leslie Madula</title>
+  <meta name="description" content="Certificates earned by Leslie Anne M. Madula, kept as graded treasures in a spatial ring.">
+  <meta name="theme-color" content="#e7dcc5">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Ma+Shan+Zheng&family=Manrope:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages/treasury.css">
+  <script src="assets/js/boot.js"></script>
+  <script type="module" src="assets/js/main.js"></script>
+</head>
+<body data-page="treasury">
+  <main class="page">
+    <section class="page-head wrap">
+      <p class="eyebrow left"><span><span class="cn" lang="zh-Hans" translate="no">宝阁</span>&ensp;Certificates</span></p>
+      <h1 class="display">Treasure Pavilion</h1>
+      <p class="lead">Every certificate the Host has earned is kept in this spatial ring. Pick a treasure to inspect it, then unseal it to read the certificate itself.</p>
+      <span class="page-glyph" lang="zh-Hans" translate="no" aria-hidden="true">宝</span>
+    </section>
+
+    <section class="section wrap" style="padding-top: 0">
+      <div class="treasury">
+        <div>
+          <div class="filters" data-filters role="group" aria-label="Filter by grade"></div>
+          <div class="ring-title">
+            <h2 class="h3">Spatial Ring <span class="cn" lang="zh-Hans" translate="no" aria-hidden="true">储物戒</span></h2>
+            <span class="label" data-slot-count></span>
+          </div>
+          <div class="slots" data-slots></div>
+          <p class="grade-key">Grades follow the opening line of the Thousand Character Classic, <span class="cn" lang="zh-Hans" translate="no">天地玄黄</span>, and show how close a treasure sits to the Host's field: <b>Heaven</b> for core IT, <b>Earth</b> for skills close to it, <b>Mystic</b> for loose ties and <b>Yellow</b> for everything outside it.</p>
+        </div>
+        <aside class="window inspector" data-inspector aria-live="polite" aria-label="Item inspection"></aside>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="scroll-viewer" data-scroll-viewer aria-label="Certificate">
+    <button class="scroll-close" type="button" data-close>Close</button>
+    <div class="scroll-stage" data-stage>
+      <div class="scroll-body">
+        <span class="scroll-rod" data-rod aria-hidden="true"></span>
+        <div class="scroll-paper" data-paper><img alt=""></div>
+        <span class="scroll-rod" data-rod aria-hidden="true"></span>
+      </div>
+    </div>
+    <p class="scroll-caption" data-caption></p>
+  </dialog>
+</body>
+</html>
