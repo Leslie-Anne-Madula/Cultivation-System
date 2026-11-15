@@ -18,10 +18,21 @@ export class GitHubService {
    * @param {{repo: string, note?: string}[]} [options.listed] contributions GitHub can't detect
    */
   constructor({ username, storage, snapshot, listed = [] }) {
-    this.username = username;
+    this.username = this.normalizeUsername(username);
     this.storage = storage;
     this.snapshot = snapshot;
     this.listed = listed;
+  }
+
+  normalizeUsername(value) {
+    return String(value ?? "")
+      .trim()
+      .replace(/^https?:\/\/github\.com\//i, "")
+      .replace(/^github\.com\//i, "")
+      .replace(/\/$/, "")
+      .replace(/\?.*$/, "")
+      .replace(/\/.*$/, "")
+      .trim();
   }
 
   get profileUrl() {

@@ -67,7 +67,7 @@ export class Handscroll {
     const element = document.createElement("article");
     element.className = ["station", station.current && "current", station.locked && "locked"].filter(Boolean).join(" ");
     const merits = station.merits.length
-      ? `<ul class="merits${station.merits.length > 3 ? " compact" : ""}">${station.merits.map((merit) => `<li>${escapeHtml(merit)}</li>`).join("")}</ul>`
+      ? `<ul class="merits">${station.merits.map((merit) => `<li>${escapeHtml(merit)}</li>`).join("")}</ul>`
       : "";
     element.innerHTML = `
       <span class="station-stem" aria-hidden="true"></span>

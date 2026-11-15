@@ -33,7 +33,9 @@ export class GitHubRecords {
     const data = this.privateRepos.merge(publicData, privateData);
     this.renderStats(data);
     this.renderStatus(data);
-    this.map.render(data.calendar);
+    if (this.map?.grid && this.map?.months && this.map?.tip) {
+      this.map.render(data.calendar);
+    }
     this.library.render(data);
   }
 

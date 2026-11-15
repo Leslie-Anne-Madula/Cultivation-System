@@ -8,7 +8,7 @@ export const content = {
     name: "Leslie Anne M. Madula",
     title: "Seeker of Emerging Systems",
     email: "lesliemadula.official@gmail.com",
-    github: "leslie-anne-madula",
+    github: "Leslie-Anne-Madula",
     location: "Sta. Rosa, Laguna, Philippines",
     resume: "assets/docs/Resume_Madula.pdf",
     sect: "College of Computing Studies, University of Cabuyao",

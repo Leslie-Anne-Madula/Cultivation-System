@@ -41,7 +41,7 @@
 .station.focus .station-card { box-shadow: 0 24px 50px -30px rgba(40, 28, 10, 0.55); transform: translateY(-4px); }
 .station-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
 .station-glyph { display: block; color: var(--ink); font-family: var(--f-brush); font-size: 2.6rem; line-height: 1; }
-.station.current .station-glyph { color: var(--cinnabar); }
+.station.current .station-glyph { color: var(--ink); }
 .station-when { flex: none; color: var(--ink-3); font-size: 0.72rem; letter-spacing: 0.08em; text-align: right; }
 .station-realm { color: var(--ink-2); font-family: var(--f-serif); font-size: 1.05rem; font-weight: 600; letter-spacing: 0.02em; line-height: 1.2; }
 .station-card .station-title { margin: 16px 0 10px; color: var(--ink); font-size: 0.9rem; font-weight: 600; line-height: 1.4; }
@@ -55,9 +55,6 @@
 .merits { display: grid; gap: 5px; margin: 12px 0 0; padding: 10px 0 0; border-top: 1px dashed var(--line); list-style: none; }
 .merits li { display: grid; grid-template-columns: 12px minmax(0, 1fr); align-items: baseline; gap: 8px; color: var(--ink); font-size: 0.8rem; }
 .merits li::before { content: ""; width: 6px; height: 6px; background: var(--cinnabar); transform: rotate(45deg) translateY(-1px); }
-.merits.compact { display: flex; flex-wrap: wrap; gap: 6px; }
-.merits.compact li { display: inline-block; padding: 2px 8px; border: 1px solid var(--line-strong); font-size: 0.74rem; line-height: 1.4; }
-.merits.compact li::before { display: none; }
 
 /* Progress */
 .ascent-progress {
