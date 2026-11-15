@@ -98,6 +98,11 @@
 .repo b { color: var(--ink); font-size: 0.98rem; font-weight: 600; }
 .repo p { margin: 2px 0 0; color: var(--ink-2); font-size: 0.86rem; }
 .repo .meta { color: var(--ink-3); font-size: 0.76rem; text-align: right; white-space: nowrap; }
+.library-pagination { display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); }
+.library-page-btn { padding: 4px 10px; border: 1px solid var(--line-strong); background: transparent; color: var(--ink-2); font: inherit; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: background 0.25s, border-color 0.25s, color 0.25s; }
+.library-page-btn:hover:not(:disabled) { border-color: var(--ink); color: var(--ink); }
+.library-page-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.library-page-status { color: var(--ink-3); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
 .library-tabs { display: inline-flex; border: 1px solid var(--line-strong); }
 .library-tab { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border: 0; background: transparent; color: var(--ink-2); font-size: 0.8rem; cursor: pointer; transition: background 0.25s, color 0.25s; }
 .library-tab + .library-tab { border-left: 1px solid var(--line-strong); }

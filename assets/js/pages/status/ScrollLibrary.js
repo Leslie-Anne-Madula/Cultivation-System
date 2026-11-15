@@ -1,6 +1,6 @@
 import { escapeHtml, formatDate, glyph } from "../../core/dom.js";
 
-const MAX_ITEMS = 10;
+const MAX_ITEMS_PER_PAGE = 5;
 
 const plural = (count, word) => `${count} ${word}${count === 1 ? "" : "s"}`;
 
@@ -11,15 +11,17 @@ export class ScrollLibrary {
     this.panel = panel;
     this.username = username;
     this.notes = notes;
+    this.activeSection = 0;
   }
 
   render({ repos = [], contributedRepos = [] }) {
     this.sections = [
-      { id: "own", label: "My repositories", items: repos, renderItem: (repo) => this.ownItem(repo), empty: "No public repositories yet." },
+      { id: "own", label: "My repositories", items: repos, page: 0, renderItem: (repo) => this.ownItem(repo), empty: "No public repositories yet." },
       {
         id: "contributed",
         label: "Contributed to",
         items: contributedRepos,
+        page: 0,
         renderItem: (entry) => this.contributedItem(entry),
         empty: "No contributions to other projects are recorded yet. New pull requests, issues and commits on other repositories appear here on their own."
       }
@@ -34,16 +36,40 @@ export class ScrollLibrary {
       const tab = event.target.closest("[data-section]");
       if (tab) this.show(Number(tab.dataset.section));
     });
+    this.panel.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-page]");
+      if (!button) return;
+      const section = this.sections[this.activeSection];
+      const totalPages = Math.max(1, Math.ceil(section.items.length / MAX_ITEMS_PER_PAGE));
+      if (button.dataset.page === "prev") section.page = Math.max(0, section.page - 1);
+      if (button.dataset.page === "next") section.page = Math.min(totalPages - 1, section.page + 1);
+      this.show(this.activeSection);
+    });
     this.show(0);
   }
 
   show(index) {
+    this.activeSection = index;
     const section = this.sections[index];
     this.tabs.querySelectorAll("[data-section]").forEach((tab, i) => tab.setAttribute("aria-selected", String(i === index)));
     this.panel.setAttribute("aria-labelledby", `library-tab-${section.id}`);
-    this.panel.innerHTML = section.items.length
-      ? section.items.slice(0, MAX_ITEMS).map(section.renderItem).join("")
-      : `<p class="library-empty">${escapeHtml(section.empty)}</p>`;
+
+    if (!section.items.length) {
+      this.panel.innerHTML = `<p class="library-empty">${escapeHtml(section.empty)}</p>`;
+      return;
+    }
+
+    const totalPages = Math.max(1, Math.ceil(section.items.length / MAX_ITEMS_PER_PAGE));
+    const pageStart = section.page * MAX_ITEMS_PER_PAGE;
+    const pageItems = section.items.slice(pageStart, pageStart + MAX_ITEMS_PER_PAGE);
+    const pagination = totalPages > 1 ? `
+      <div class="library-pagination" aria-label="Repository pages">
+        <button class="library-page-btn" type="button" data-page="prev" ${section.page === 0 ? "disabled" : ""}>Previous</button>
+        <span class="library-page-status">Page ${section.page + 1} / ${totalPages}</span>
+        <button class="library-page-btn" type="button" data-page="next" ${section.page >= totalPages - 1 ? "disabled" : ""}>Next</button>
+      </div>` : "";
+
+    this.panel.innerHTML = `${pageItems.map(section.renderItem).join("")}${pagination}`;
   }
 
   ownItem(repo) {
