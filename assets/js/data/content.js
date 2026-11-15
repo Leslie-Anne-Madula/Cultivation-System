@@ -139,6 +139,7 @@ export const content = {
       glyph: "金丹", realm: "Golden Core", when: "2024 – present", title: "BSIT, University of Cabuyao · Years Two to Four",
       text: "Everything I learned condensed into a core: web, mobile, data and cloud, now refined toward graduation.",
       merits: [
+        "Fortinet NSE 1 & 2 · Certified in Cybersecurity",
         "Azure AI Fundamentals · TESDA",
         "AWS Build from the Clouds · Trailhead & Kiroverse",
         "Ignite Philippines · Wadhwani Foundation",
@@ -168,6 +169,48 @@ export const content = {
 
   /* Ordered from highest grade to lowest. form: pendant | slip | talisman | token | scroll | pill */
   treasures: [
+    {
+      id: "nse2", glyph: "御", grade: "heaven", form: "pendant",
+      item: "Second-Tier Guardian Pendant",
+      title: "Fortinet NSE 2 · Certified in Cybersecurity",
+      issuer: "Fortinet Training Institute",
+      date: "24 Oct 2026",
+      effect: "Fortinet's second certification tier in cybersecurity. Valid until 24 Oct 2028. Validation number 1545980720LA.",
+      image: "assets/certificates/fortinet-nse2-certified.jpg",
+      pdf: "assets/certificates/fortinet-nse2-certified.pdf",
+      verify: "https://training.fortinet.com/admin/tool/certificate/index.php"
+    },
+    {
+      id: "nse1", glyph: "护", grade: "heaven", form: "pendant",
+      item: "First-Tier Guardian Pendant",
+      title: "Fortinet NSE 1 · Certified in Cybersecurity",
+      issuer: "Fortinet Training Institute",
+      date: "24 Oct 2026",
+      effect: "Fortinet's first certification tier in cybersecurity. Valid until 24 Oct 2028. Validation number 8461966543LA.",
+      image: "assets/certificates/fortinet-nse1-certified.jpg",
+      pdf: "assets/certificates/fortinet-nse1-certified.pdf",
+      verify: "https://training.fortinet.com/admin/tool/certificate/index.php"
+    },
+    {
+      id: "firewall", glyph: "阵", grade: "heaven", form: "scroll",
+      item: "Barrier Formation Scroll",
+      title: "Introduction to Next Generation Firewall 1.0 · Certificate of Course Completion",
+      issuer: "Fortinet Training Institute",
+      date: "24 Oct 2026",
+      effect: "How next-generation firewalls inspect network traffic and stop threats before they get in.",
+      image: "assets/certificates/fortinet-nse2-course.jpg",
+      pdf: "assets/certificates/fortinet-nse2-course.pdf"
+    },
+    {
+      id: "cyber-cloud", glyph: "守", grade: "heaven", form: "slip",
+      item: "Jade Slip of Warding Basics",
+      title: "Cybersecurity and Cloud Fundamentals 1.0 · Certificate of Course Completion",
+      issuer: "Fortinet Training Institute",
+      date: "24 Oct 2026",
+      effect: "The basics of cybersecurity and cloud computing, and the common threats both have to guard against.",
+      image: "assets/certificates/fortinet-nse1-course.jpg",
+      pdf: "assets/certificates/fortinet-nse1-course.pdf"
+    },
     {
       id: "azure", glyph: "丹", grade: "heaven", form: "pill",
       item: "Azure Insight Pill",
@@ -250,7 +293,7 @@ export const content = {
       pdf: "assets/certificates/scholarship-exam-quiz.pdf"
     }
   ],
-  inventorySlots: 12,
+  inventorySlots: 16,
 
   /* Shown when GitHub can't be reached. */
   githubSnapshot: {

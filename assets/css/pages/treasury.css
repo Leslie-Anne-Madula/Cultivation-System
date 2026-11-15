@@ -112,5 +112,6 @@
 }
 @media (max-width: 720px) {
   .slots { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .slot.empty:last-child:nth-child(3n + 1) { display: none; }
   .facts div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
 }

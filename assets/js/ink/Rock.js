@@ -1,4 +1,4 @@
-import { SeededRandom, ValueNoise1D, ValueNoise2D } from "./random.js";
+import { SeededRandom, ValueNoise1D, ValueNoise2D } from "./noise.js";
 import { rgba } from "./InkCanvas.js";
 
 /**

@@ -87,10 +87,16 @@ export class AudioEngine {
     return filter;
   }
 
-  /** Sends a voice to a bus, with an optional amount of reverb. */
-  route(node, { bus = "sfx", reverb = 0.25 } = {}) {
-    node.connect(this[bus]);
-    if (reverb > 0) node.connect(this.createGain(reverb, this.reverb));
+  /** Sends a voice to a bus, placed left or right by `pan` (-1 to 1), with an optional amount of reverb. */
+  route(node, { bus = "sfx", reverb = 0.25, pan = 0 } = {}) {
+    let output = node;
+    if (pan && this.context.createStereoPanner) {
+      const panner = this.context.createStereoPanner();
+      panner.pan.value = pan;
+      output = node.connect(panner);
+    }
+    output.connect(this[bus]);
+    if (reverb > 0) output.connect(this.createGain(reverb, this.reverb));
   }
 
   noiseSource({ loop = false } = {}) {

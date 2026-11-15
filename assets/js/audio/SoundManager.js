@@ -1,10 +1,13 @@
 import { AudioEngine } from "./AudioEngine.js";
-import { Guqin, SingingBowl, Effects } from "./instruments.js";
-import { AmbientScore } from "./AmbientScore.js";
+import { Effects } from "./instruments/Effects.js";
+import { Guqin } from "./instruments/Guqin.js";
+import { SingingBowl } from "./instruments/SingingBowl.js";
+import { AmbientScore } from "./score/AmbientScore.js";
 
 const STORE_KEY = "sound";
-/** D major pentatonic, A3 to F#5: low enough to stay mellow, high enough for small speakers. */
-const NOTES = [220.0, 246.94, 293.66, 329.63, 369.99, 440.0, 493.88, 587.33, 659.25, 739.99];
+/** D major pentatonic, D3 to B4: the middle of the qin's range. */
+const NOTES = [146.83, 164.81, 185.0, 220.0, 246.94, 293.66, 329.63, 369.99, 440.0, 493.88];
+const OCTAVE = 5;
 const HOVER_GAP_MS = 120;
 
 /**
@@ -57,14 +60,7 @@ export class SoundManager {
     this.bowl = new SingingBowl(this.engine);
     this.effects = new Effects(this.engine);
     this.score = new AmbientScore(this.engine, this.guqin);
-    const queue = [...NOTES];
-    const warm = () => {
-      const frequency = queue.shift();
-      if (frequency === undefined) return;
-      this.guqin.buffer(frequency);
-      setTimeout(warm, 30);
-    };
-    setTimeout(warm, 400);
+    this.guqin.prepare(NOTES);
   }
 
   /** Fades out when the browser tab is hidden and back in when it returns, instead of cutting off. */
@@ -89,8 +85,10 @@ export class SoundManager {
     return NOTES[((index % NOTES.length) + NOTES.length) % NOTES.length];
   }
 
-  roll(from, count, spacing, gain) {
-    for (let i = 0; i < count; i++) this.guqin.pluck(this.note(from + i), { when: i * spacing, gain: gain * (0.8 + 0.2 * (i / count)) });
+  /** Cuo: a note and its octave plucked together. */
+  cuo(index, { when = 0, gain = 0.22 } = {}) {
+    this.guqin.pluck(this.note(index), { when, gain });
+    this.guqin.pluck(this.note(index + OCTAVE), { when: when + 0.015, gain: gain * 0.75 });
   }
 
   createCues() {
@@ -98,7 +96,7 @@ export class SoundManager {
       tap: () => this.guqin.pluck(this.note(Math.random() < 0.5 ? 0 : 2), { gain: 0.2, damp: 0.6, reverb: 0.3 }),
       hover: ({ index = 0 }) => this.guqin.pluck(this.note(index), { gain: 0.12, damp: 1.4, reverb: 0.45 }),
       select: ({ index = 0 }) => {
-        this.guqin.pluck(this.note(index), { gain: 0.34, vibrato: 0.003 });
+        this.guqin.pluck(this.note(index), { gain: 0.34, ornament: "yin" });
         this.guqin.pluck(this.note(index + 2), { when: 0.12, gain: 0.18 });
       },
       notify: () => {
@@ -106,8 +104,10 @@ export class SoundManager {
         this.guqin.harmonic(880.0, { when: 0.16, gain: 0.1 });
       },
       quest: () => {
-        [2, 4, 5, 7].forEach((n, i) => this.guqin.pluck(this.note(n), { when: i * 0.12, gain: 0.28 }));
-        this.guqin.harmonic(880.0, { when: 0.55, gain: 0.11, decay: 3 });
+        this.guqin.pluck(this.note(2), { gain: 0.26 });
+        this.guqin.pluck(this.note(4), { when: 0.14, gain: 0.26 });
+        this.guqin.pluck(this.note(5), { when: 0.28, gain: 0.3, ornament: "nao" });
+        this.guqin.harmonic(880.0, { when: 0.6, gain: 0.11 });
       },
       turn: () => {
         this.engine.duckMusic(0.5, 0.7);
@@ -116,13 +116,14 @@ export class SoundManager {
       },
       open: () => {
         this.effects.paper({ gain: 0.3, rate: 1.25 });
-        this.roll(0, 4, 0.08, 0.2);
+        this.cuo(0);
       },
       unseal: () => {
         this.effects.paper({ gain: 0.34, rate: 0.85 });
         this.effects.paper({ when: 0.22, gain: 0.22, rate: 0.75 });
-        this.roll(0, 6, 0.07, 0.17);
-        this.guqin.harmonic(587.33, { when: 0.6, gain: 0.12, decay: 3 });
+        this.cuo(0, { gain: 0.24 });
+        this.guqin.pluck(this.note(7), { when: 0.35, gain: 0.2, slideTo: this.note(8), slideAt: 0.4 });
+        this.guqin.harmonic(587.33, { when: 0.9, gain: 0.12 });
       },
       stamp: () => this.effects.thud({ gain: 0.38 }),
       theme: () => {
@@ -131,11 +132,11 @@ export class SoundManager {
       },
       sun: () => {
         this.bowl.strike(440.0, { gain: 0.14 });
-        this.guqin.harmonic(880.0, { when: 0.2, gain: 0.09, decay: 3 });
+        this.guqin.harmonic(880.0, { when: 0.2, gain: 0.09 });
       },
       enable: () => {
         this.guqin.pluck(this.note(2), { gain: 0.3 });
-        this.guqin.pluck(this.note(5), { when: 0.18, gain: 0.26, vibrato: 0.003 });
+        this.guqin.pluck(this.note(5), { when: 0.18, gain: 0.26, ornament: "chuo" });
       }
     };
   }

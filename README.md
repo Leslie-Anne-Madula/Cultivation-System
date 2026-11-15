@@ -73,13 +73,16 @@ Text that appears once, like page headings, lives in the HTML. Everything that i
 2. Save a JPG of its first page next to it as `my-cert.jpg`.
 3. Add an entry to `treasures` with a `glyph`, a `grade` (`heaven`, `earth`, `mystic` or `yellow`) and a `form` (`pendant`, `slip`, `talisman`, `token`, `scroll` or `pill`).
 
+Add `verify` with a link if the issuer has a page for checking the certificate online. If the list outgrows `inventorySlots`, the inventory grows with it.
+
 For a course still in progress, set `refining: true`, use `grade: null` and leave out `image` and `pdf`. It shows as a pill refining in a cauldron until you swap in the certificate.
 
 ## Sound
 
 Sound is off until the visitor turns it on with the speaker button. Browsers only allow audio after a click, so music starts on the first click after the site opens. It then continues across pages, dips gently while a page turns, and fades out and back in when the visitor switches browser tabs.
 
-- **Music** is generated live: slow guqin phrases on the pentatonic scale over a soft drone and distant wind.
+- **Music** is generated live in `AmbientScore.js`: a bamboo flute sings the theme over a flowing zither figure and a soft pad, the guqin leads every other chorus, and a brook, distant birds and wind run underneath. It cycles verse, chorus and interlude at `TEMPO` beats a minute, and each pass picks a melody variant and ornaments it differently. The melodies are written out in `VERSES` and `CHORUSES` as bars of notes, and the chords in `CHORDS`.
+- **Guqin voice:** `Guqin` in `instruments.js` models a silk string plucked near the bridge on a hollow wooden body. Its left-hand techniques are options on `pluck()`: `ornament` (`chuo` and `zhu` slide into a note from below or above, `yin` and `nao` add slow vibrato) and `slideTo`, which slides to a new pitch without plucking again.
 - **Tone:** every sound passes through a warm, softening filter, so nothing turns sharp. Levels live in `AudioEngine`, and each cue's volume is set in `SoundManager.createCues()`.
 - **Click sounds** are declarative. Any link or button plays the cue in its `data-sound` attribute. The default is `tap`, and `none` mutes it. The cues are listed in `SoundManager.createCues()`.
 - **Hover notes:** add `data-hover-note="3"` to an element to pluck a note when the pointer enters it.

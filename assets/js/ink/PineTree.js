@@ -1,4 +1,4 @@
-import { SeededRandom, ValueNoise1D } from "./random.js";
+import { SeededRandom, ValueNoise1D } from "./noise.js";
 import { rgba } from "./InkCanvas.js";
 
 const SEGMENTS = 48;
