@@ -85,8 +85,9 @@ export class InviteDialog {
     const subject = `Sect invitation${sect ? ` from ${sect}` : ""}`;
     const body = `Hello Leslie,\n\n${message}\n\nRegards,\n${name}${sect ? `\n${sect}` : ""}`;
     setTimeout(() => {
-      window.location.href = `mailto:${this.host.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      this.showNote("Your mail app should open with this letter. If nothing opened, copy the address below.");
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(this.host.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.open(gmailUrl, "_blank", "noopener,noreferrer");
+      this.showNote("Your Gmail compose window should open with this letter. If it did not, copy the address below.");
     }, 650);
   }
 

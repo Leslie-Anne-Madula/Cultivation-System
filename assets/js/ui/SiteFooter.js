@@ -10,12 +10,13 @@ export class SiteFooter {
     const footer = document.createElement("footer");
     footer.className = "site-footer";
     footer.dataset.shell = "";
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
     footer.innerHTML = `
       <div class="wrap">
-        <p><span class="seal" translate="no" aria-hidden="true">道</span>© ${new Date().getFullYear()} ${escapeHtml(name)} · Painted in ink and code</p>
+        <p><span class="seal" translate="no" aria-hidden="true">道</span>© ${new Date().getFullYear()} ${escapeHtml(name)}</p>
         <div class="footer-links">
           <a href="https://github.com/${escapeHtml(github)}" target="_blank" rel="noopener">GitHub</a>
-          <a href="mailto:${escapeHtml(email)}">Email</a>
+          <a href="${gmailUrl}" target="_blank" rel="noopener">Email</a>
           <a href="${escapeHtml(resume)}" target="_blank" rel="noopener">Résumé (PDF)</a>
         </div>
       </div>`;

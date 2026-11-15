@@ -19,6 +19,16 @@ export const grades = {
  */
 const TREASURES = [
   {
+    id: "nse3", glyph: "令", grade: "heaven", form: "pendant",
+    item: "Third-Tier Guardian Pendant",
+    title: "Fortinet NSE 3 · Certified in Cybersecurity",
+    issuer: "Fortinet Training Institute",
+    date: "31 Oct 2026",
+    effect: "Fortinet's third certification tier in cybersecurity. Valid until 31 Oct 2028. Validation number 3309211227LA.",
+    file: "fortinet-nse3-certified",
+    verify: "https://training.fortinet.com/admin/tool/certificate/index.php"
+  },
+  {
     id: "nse2", glyph: "御", grade: "heaven", form: "pendant",
     item: "Second-Tier Guardian Pendant",
     title: "Fortinet NSE 2 · Certified in Cybersecurity",
@@ -39,6 +49,15 @@ const TREASURES = [
     verify: "https://training.fortinet.com/admin/tool/certificate/index.php"
   },
   {
+    id: "fortigate", glyph: "堡", grade: "heaven", form: "scroll",
+    item: "Carp Palace Scroll",
+    title: "FortiGate 7.6 Operator Self-Paced · Certificate of Course Completion",
+    issuer: "Fortinet Training Institute",
+    date: "31 Oct 2026",
+    effect: "How to operate core FortiGate features and execute fundamental configuration and monitoring tasks on next-generation hardware.",
+    file: "fortinet-nse3-course"
+  },
+  {
     id: "firewall", glyph: "阵", grade: "heaven", form: "scroll",
     item: "Barrier Formation Scroll",
     title: "Introduction to Next Generation Firewall 1.0 · Certificate of Course Completion",
@@ -48,13 +67,22 @@ const TREASURES = [
     file: "fortinet-nse2-course"
   },
   {
-    id: "cyber-cloud", glyph: "守", grade: "heaven", form: "slip",
-    item: "Jade Slip of Warding Basics",
+    id: "cyber-cloud", glyph: "守", grade: "heaven", form: "scroll",
+    item: "Scroll of Warding Basics",
     title: "Cybersecurity and Cloud Fundamentals 1.0 · Certificate of Course Completion",
     issuer: "Fortinet Training Institute",
     date: "24 Oct 2026",
     effect: "The basics of cybersecurity and cloud computing, and the common threats both have to guard against.",
     file: "fortinet-nse1-course"
+  },
+  {
+    id: "microsoft-cybersecurity", glyph: "丹", grade: "heaven", form: "pill",
+    item: "CyberSecurity Insight Pill",
+    title: "Microsoft Cybersecurity Course: Security, Compliance, and Identity Fundamentals · Certificate of Completion",
+    issuer: "TESDA Online Program",
+    date: "09 Nov 2026",
+    effect: "Refined cybersecurity skill through TESDA. Certificate code CTmb7hA5Dw.",
+    file: "tesda-cybersecurity"
   },
   {
     id: "azure", glyph: "丹", grade: "heaven", form: "pill",
@@ -84,8 +112,8 @@ const TREASURES = [
     file: "aws-trailhead"
   },
   {
-    id: "ignite", glyph: "商", grade: "earth", form: "slip",
-    item: "Merchant Sage's Jade Slip",
+    id: "ignite", glyph: "商", grade: "earth", form: "pendant",
+    item: "Merchant Sage's Jade Pendant",
     title: "Ignite Philippines · Certificate of Content Completion",
     issuer: "Wadhwani Foundation",
     date: "26 Mar 2026",
@@ -93,13 +121,22 @@ const TREASURES = [
     file: "wadhwani-ignite-philippines"
   },
   {
-    id: "thesis", glyph: "卷", grade: "earth", form: "scroll",
-    item: "Capstone Preparation Scroll",
+    id: "thesis", glyph: "卷", grade: "earth", form: "token",
+    item: "Capstone Preparation Token",
     title: "Thesis & Capstone Ready: Preparing 3rd Year Students",
     issuer: "College of Computing Studies · University of Cabuyao",
     date: "10 Jan 2026",
     effect: "Readied the Host for the thesis and capstone project that every IT student must complete.",
     file: "thesis-capstone-ready"
+  },
+  {
+    id: "internship", glyph: "迁", grade: "mystic", form: "slip",
+    item: "Sect Ascension Permit",
+    title: "Internship Onboarding 2026 · Certificate of Attendance",
+    issuer: "College of Computing Studies · University of Cabuyao",
+    date: "05 Nov 2026",
+    effect: "Lectured about the outside world of IT and the Host's internship journey",
+    file: "ccs-internship-orientation"
   },
   {
     id: "orientation", glyph: "令", grade: "mystic", form: "token",
@@ -111,8 +148,8 @@ const TREASURES = [
     file: "ccs-student-orientation"
   },
   {
-    id: "efset", glyph: "言", grade: "yellow", form: "pendant",
-    item: "Jade Pendant of Ten Thousand Tongues",
+    id: "efset", glyph: "言", grade: "yellow", form: "slip",
+    item: "Slip of Ten Thousand Tongues",
     title: "EF SET English Certificate · C2 Proficient",
     issuer: "EF Standard English Test",
     date: "12 Jul 2024",
@@ -121,8 +158,8 @@ const TREASURES = [
     verify: "https://cert.efset.org/FERBL3"
   },
   {
-    id: "scholar", glyph: "试", grade: "yellow", form: "token",
-    item: "Flawless Examination Token",
+    id: "scholar", glyph: "试", grade: "yellow", form: "slip",
+    item: "Flawless Examination Slip",
     title: "Scholarship Exam Quiz · Certificate of Achievement",
     issuer: "ProProfs Quiz Maker",
     date: "7 Feb 2024",
