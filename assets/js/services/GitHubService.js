@@ -28,9 +28,11 @@ export class GitHubService {
     return `https://github.com/${this.username}`;
   }
 
-  async load() {
+  async load({ forceRefresh = false } = {}) {
     const cached = this.storage.read(CACHE_KEY);
-    if (cached && Date.now() - cached.savedAt < CACHE_TTL) return { ...cached.data, live: true, syncedAt: cached.savedAt };
+    if (!forceRefresh && cached && Date.now() - cached.savedAt < CACHE_TTL) {
+      return { ...cached.data, live: true, syncedAt: cached.savedAt };
+    }
 
     try {
       const data = await this.fetchAll();

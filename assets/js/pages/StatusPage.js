@@ -13,7 +13,7 @@ export class StatusPage extends Page {
     new IdentityPanel($("[data-identity]"), context).render();
     new RadarChart($("[data-radar]"), $("[data-attribute-note]"), context.content.attributes).render();
     new RealmMeter($("[data-realm-meter]"), context).render();
-    new GitHubRecords($("[data-records]"), context).render();
+    new GitHubRecords($("[data-records]"), context).render({ forceRefresh: true });
     new ElementWheel({ wheel: $("[data-wheel]"), manual: $("[data-manual]"), caption: $("[data-cycle-caption]") }, context).render();
 
     this.scope.timeout(() => context.quests.complete("status"), 1400);

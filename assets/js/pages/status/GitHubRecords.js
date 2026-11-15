@@ -25,8 +25,11 @@ export class GitHubRecords {
     );
   }
 
-  async render() {
-    const [publicData, privateData] = await Promise.all([this.github.load(), this.privateRepos.load()]);
+  async render({ forceRefresh = false } = {}) {
+    const [publicData, privateData] = await Promise.all([
+      this.github.load({ forceRefresh }),
+      this.privateRepos.load()
+    ]);
     const data = this.privateRepos.merge(publicData, privateData);
     this.renderStats(data);
     this.renderStatus(data);

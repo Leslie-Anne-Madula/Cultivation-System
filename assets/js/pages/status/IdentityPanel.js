@@ -20,7 +20,7 @@ export class IdentityPanel {
       ["宗", "Sect", escapeHtml(host.sect)],
       ["根", "Spirit root", escapeHtml(host.spiritRoot)],
       ["道", "Dao", escapeHtml(host.dao)],
-      ["态", "Condition", `<span class="condition"><i aria-hidden="true"></i>${escapeHtml(host.condition)}</span>`],
+      ["态", "Condition", `<span class="condition">${escapeHtml(host.condition)}</span>`],
       ["地", "Domain", escapeHtml(host.location)]
     ];
     this.element.innerHTML = rows.map(([mark, label, value]) => `<div><dt>${glyph(mark)}${label}</dt><dd>${value}</dd></div>`).join("");

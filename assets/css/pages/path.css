@@ -27,8 +27,7 @@
 }
 .station.side .station-marker { left: -34px; }
 .station.reached .station-marker { background: var(--ink); }
-.station.current .station-marker { border-color: var(--cinnabar); background: var(--cinnabar); animation: qi 2.6s infinite; }
-@keyframes qi { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--cinnabar) 50%, transparent); } 100% { box-shadow: 0 0 0 18px transparent; } }
+.station.current .station-marker { border-color: var(--cinnabar); background: var(--cinnabar); }
 .station-stem { position: absolute; left: 50%; width: 1px; background: var(--line-strong); }
 .station-card {
   position: relative;
@@ -47,8 +46,7 @@
 .station-realm { color: var(--ink-2); font-family: var(--f-serif); font-size: 1.05rem; font-weight: 600; letter-spacing: 0.02em; line-height: 1.2; }
 .station-card .station-title { margin: 16px 0 10px; color: var(--ink); font-size: 0.9rem; font-weight: 600; line-height: 1.4; }
 .station-card p { margin: 0; color: var(--ink-2); font-size: 0.88rem; line-height: 1.55; }
-.station-here { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 6px; color: var(--cinnabar); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
-.station-here::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--cinnabar); animation: pulse 2s infinite; }
+.station-here { margin-bottom: 6px; color: var(--cinnabar); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
 .station.locked .station-card { border-style: dashed; background: color-mix(in srgb, var(--paper-2) 70%, transparent); }
 .station.locked .station-glyph { opacity: 0.55; }
 .station-lock { position: absolute; top: -18px; right: 14px; width: 34px; height: 34px; font-size: 19px; transform: rotate(-8deg); }
